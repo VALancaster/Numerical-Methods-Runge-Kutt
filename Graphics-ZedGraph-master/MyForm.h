@@ -91,6 +91,25 @@ namespace Graph {
 	private: System::Windows::Forms::CheckBox^ checkAdaptive;
 	private: System::Windows::Forms::TextBox^ textBoxEpsB;
 	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Button^ btnReset;
+	private: System::Windows::Forms::TextBox^ textBoxU0;
+
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ label9;
+
+	private: System::Windows::Forms::TextBox^ txtM;
+	private: System::Windows::Forms::Label^ label12;
+	private: System::Windows::Forms::TextBox^ txtKS;
+
+	private: System::Windows::Forms::TextBox^ txtK;
+	private: System::Windows::Forms::Label^ label11;
+	private: System::Windows::Forms::Label^ label10;
+	private: System::Windows::Forms::TextBox^ txtC;
+	private: System::Windows::Forms::Label^ label14;
+	private: System::Windows::Forms::TextBox^ txtNmax;
+	private: System::Windows::Forms::TextBox^ txtV0;
+	private: System::Windows::Forms::Label^ label13;
+
 
 
 		   PointPairList^ list_phase = gcnew PointPairList(); // фазовый портрет
@@ -156,6 +175,21 @@ namespace Graph {
 			   this->label6 = (gcnew System::Windows::Forms::Label());
 			   this->label7 = (gcnew System::Windows::Forms::Label());
 			   this->panel1 = (gcnew System::Windows::Forms::Panel());
+			   this->label14 = (gcnew System::Windows::Forms::Label());
+			   this->txtNmax = (gcnew System::Windows::Forms::TextBox());
+			   this->txtV0 = (gcnew System::Windows::Forms::TextBox());
+			   this->label13 = (gcnew System::Windows::Forms::Label());
+			   this->label12 = (gcnew System::Windows::Forms::Label());
+			   this->txtKS = (gcnew System::Windows::Forms::TextBox());
+			   this->txtK = (gcnew System::Windows::Forms::TextBox());
+			   this->label11 = (gcnew System::Windows::Forms::Label());
+			   this->label10 = (gcnew System::Windows::Forms::Label());
+			   this->txtC = (gcnew System::Windows::Forms::TextBox());
+			   this->label9 = (gcnew System::Windows::Forms::Label());
+			   this->txtM = (gcnew System::Windows::Forms::TextBox());
+			   this->textBoxU0 = (gcnew System::Windows::Forms::TextBox());
+			   this->label5 = (gcnew System::Windows::Forms::Label());
+			   this->btnReset = (gcnew System::Windows::Forms::Button());
 			   this->label4 = (gcnew System::Windows::Forms::Label());
 			   this->textBoxEpsB = (gcnew System::Windows::Forms::TextBox());
 			   this->checkAdaptive = (gcnew System::Windows::Forms::CheckBox());
@@ -177,7 +211,7 @@ namespace Graph {
 			   this->zedGraphControl1->ScrollMinX = 0;
 			   this->zedGraphControl1->ScrollMinY = 0;
 			   this->zedGraphControl1->ScrollMinY2 = 0;
-			   this->zedGraphControl1->Size = System::Drawing::Size(689, 360);
+			   this->zedGraphControl1->Size = System::Drawing::Size(689, 310);
 			   this->zedGraphControl1->TabIndex = 0;
 			   this->zedGraphControl1->Load += gcnew System::EventHandler(this, &MyForm::zedGraphControl1_Load);
 			   // 
@@ -185,7 +219,7 @@ namespace Graph {
 			   // 
 			   this->button1->Location = System::Drawing::Point(1108, 15);
 			   this->button1->Name = L"button1";
-			   this->button1->Size = System::Drawing::Size(142, 29);
+			   this->button1->Size = System::Drawing::Size(182, 65);
 			   this->button1->TabIndex = 1;
 			   this->button1->Text = L"Draw";
 			   this->button1->UseVisualStyleBackColor = true;
@@ -203,7 +237,7 @@ namespace Graph {
 			   this->dataGridView1->Location = System::Drawing::Point(698, 3);
 			   this->dataGridView1->Name = L"dataGridView1";
 			   this->dataGridView1->RowHeadersVisible = false;
-			   this->dataGridView1->Size = System::Drawing::Size(689, 360);
+			   this->dataGridView1->Size = System::Drawing::Size(689, 310);
 			   this->dataGridView1->TabIndex = 2;
 			   this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridView1_CellContentClick);
 			   // 
@@ -246,7 +280,7 @@ namespace Graph {
 			   // label2
 			   // 
 			   this->label2->AutoSize = true;
-			   this->label2->Location = System::Drawing::Point(134, 26);
+			   this->label2->Location = System::Drawing::Point(43, 66);
 			   this->label2->Name = L"label2";
 			   this->label2->Size = System::Drawing::Size(13, 13);
 			   this->label2->TabIndex = 5;
@@ -254,7 +288,7 @@ namespace Graph {
 			   // 
 			   // textBox2
 			   // 
-			   this->textBox2->Location = System::Drawing::Point(153, 19);
+			   this->textBox2->Location = System::Drawing::Point(62, 63);
 			   this->textBox2->Name = L"textBox2";
 			   this->textBox2->Size = System::Drawing::Size(49, 20);
 			   this->textBox2->TabIndex = 6;
@@ -263,7 +297,7 @@ namespace Graph {
 			   // label3
 			   // 
 			   this->label3->AutoSize = true;
-			   this->label3->Location = System::Drawing::Point(222, 26);
+			   this->label3->Location = System::Drawing::Point(43, 116);
 			   this->label3->Name = L"label3";
 			   this->label3->Size = System::Drawing::Size(13, 13);
 			   this->label3->TabIndex = 7;
@@ -271,11 +305,12 @@ namespace Graph {
 			   // 
 			   // textBox3
 			   // 
-			   this->textBox3->Location = System::Drawing::Point(241, 19);
+			   this->textBox3->Location = System::Drawing::Point(62, 109);
 			   this->textBox3->Name = L"textBox3";
-			   this->textBox3->Size = System::Drawing::Size(61, 20);
+			   this->textBox3->Size = System::Drawing::Size(48, 20);
 			   this->textBox3->TabIndex = 8;
-			   this->textBox3->Text = L"0,1";
+			   this->textBox3->Text = L"0,0001";
+			   this->textBox3->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox3_TextChanged);
 			   // 
 			   // radioTest
 			   // 
@@ -317,6 +352,7 @@ namespace Graph {
 			   this->textBoxN->Name = L"textBoxN";
 			   this->textBoxN->Size = System::Drawing::Size(100, 20);
 			   this->textBoxN->TabIndex = 17;
+			   this->textBoxN->Text = L"11";
 			   this->textBoxN->TextChanged += gcnew System::EventHandler(this, &MyForm::textBoxN_TextChanged);
 			   // 
 			   // textBoxEps
@@ -348,6 +384,21 @@ namespace Graph {
 			   // 
 			   // panel1
 			   // 
+			   this->panel1->Controls->Add(this->label14);
+			   this->panel1->Controls->Add(this->txtNmax);
+			   this->panel1->Controls->Add(this->txtV0);
+			   this->panel1->Controls->Add(this->label13);
+			   this->panel1->Controls->Add(this->label12);
+			   this->panel1->Controls->Add(this->txtKS);
+			   this->panel1->Controls->Add(this->txtK);
+			   this->panel1->Controls->Add(this->label11);
+			   this->panel1->Controls->Add(this->label10);
+			   this->panel1->Controls->Add(this->txtC);
+			   this->panel1->Controls->Add(this->label9);
+			   this->panel1->Controls->Add(this->txtM);
+			   this->panel1->Controls->Add(this->textBoxU0);
+			   this->panel1->Controls->Add(this->label5);
+			   this->panel1->Controls->Add(this->btnReset);
 			   this->panel1->Controls->Add(this->label4);
 			   this->panel1->Controls->Add(this->textBoxEpsB);
 			   this->panel1->Controls->Add(this->checkAdaptive);
@@ -366,10 +417,140 @@ namespace Graph {
 			   this->panel1->Controls->Add(this->textBoxN);
 			   this->panel1->Controls->Add(this->button1);
 			   this->panel1->Dock = System::Windows::Forms::DockStyle::Bottom;
-			   this->panel1->Location = System::Drawing::Point(0, 366);
+			   this->panel1->Location = System::Drawing::Point(0, 316);
 			   this->panel1->Name = L"panel1";
-			   this->panel1->Size = System::Drawing::Size(1390, 186);
+			   this->panel1->Size = System::Drawing::Size(1390, 236);
 			   this->panel1->TabIndex = 21;
+			   // 
+			   // label14
+			   // 
+			   this->label14->AutoSize = true;
+			   this->label14->Location = System::Drawing::Point(127, 109);
+			   this->label14->Name = L"label14";
+			   this->label14->Size = System::Drawing::Size(34, 13);
+			   this->label14->TabIndex = 40;
+			   this->label14->Text = L"Nmax";
+			   // 
+			   // txtNmax
+			   // 
+			   this->txtNmax->Location = System::Drawing::Point(174, 109);
+			   this->txtNmax->Name = L"txtNmax";
+			   this->txtNmax->Size = System::Drawing::Size(80, 20);
+			   this->txtNmax->TabIndex = 39;
+			   this->txtNmax->Text = L"1000";
+			   // 
+			   // txtV0
+			   // 
+			   this->txtV0->Location = System::Drawing::Point(172, 60);
+			   this->txtV0->Name = L"txtV0";
+			   this->txtV0->Size = System::Drawing::Size(82, 20);
+			   this->txtV0->TabIndex = 38;
+			   this->txtV0->Text = L"0";
+			   // 
+			   // label13
+			   // 
+			   this->label13->AutoSize = true;
+			   this->label13->Location = System::Drawing::Point(145, 63);
+			   this->label13->Name = L"label13";
+			   this->label13->Size = System::Drawing::Size(21, 13);
+			   this->label13->TabIndex = 37;
+			   this->label13->Text = L"u\'0";
+			   // 
+			   // label12
+			   // 
+			   this->label12->AutoSize = true;
+			   this->label12->Location = System::Drawing::Point(151, 207);
+			   this->label12->Name = L"label12";
+			   this->label12->Size = System::Drawing::Size(17, 13);
+			   this->label12->TabIndex = 36;
+			   this->label12->Text = L"k*";
+			   // 
+			   // txtKS
+			   // 
+			   this->txtKS->Location = System::Drawing::Point(172, 200);
+			   this->txtKS->Name = L"txtKS";
+			   this->txtKS->Size = System::Drawing::Size(69, 20);
+			   this->txtKS->TabIndex = 35;
+			   this->txtKS->Text = L"2,0";
+			   // 
+			   // txtK
+			   // 
+			   this->txtK->Location = System::Drawing::Point(172, 175);
+			   this->txtK->Name = L"txtK";
+			   this->txtK->Size = System::Drawing::Size(69, 20);
+			   this->txtK->TabIndex = 34;
+			   this->txtK->Text = L"2,0";
+			   // 
+			   // label11
+			   // 
+			   this->label11->AutoSize = true;
+			   this->label11->Location = System::Drawing::Point(155, 178);
+			   this->label11->Name = L"label11";
+			   this->label11->Size = System::Drawing::Size(13, 13);
+			   this->label11->TabIndex = 32;
+			   this->label11->Text = L"k";
+			   // 
+			   // label10
+			   // 
+			   this->label10->AutoSize = true;
+			   this->label10->Location = System::Drawing::Point(41, 207);
+			   this->label10->Name = L"label10";
+			   this->label10->Size = System::Drawing::Size(13, 13);
+			   this->label10->TabIndex = 31;
+			   this->label10->Text = L"c";
+			   // 
+			   // txtC
+			   // 
+			   this->txtC->Location = System::Drawing::Point(62, 200);
+			   this->txtC->Name = L"txtC";
+			   this->txtC->Size = System::Drawing::Size(69, 20);
+			   this->txtC->TabIndex = 30;
+			   this->txtC->Text = L"0,15";
+			   // 
+			   // label9
+			   // 
+			   this->label9->AutoSize = true;
+			   this->label9->Location = System::Drawing::Point(41, 178);
+			   this->label9->Name = L"label9";
+			   this->label9->Size = System::Drawing::Size(15, 13);
+			   this->label9->TabIndex = 29;
+			   this->label9->Text = L"m";
+			   // 
+			   // txtM
+			   // 
+			   this->txtM->Location = System::Drawing::Point(62, 175);
+			   this->txtM->Name = L"txtM";
+			   this->txtM->Size = System::Drawing::Size(69, 20);
+			   this->txtM->TabIndex = 27;
+			   this->txtM->Text = L"0,01";
+			   // 
+			   // textBoxU0
+			   // 
+			   this->textBoxU0->Location = System::Drawing::Point(174, 19);
+			   this->textBoxU0->Name = L"textBoxU0";
+			   this->textBoxU0->Size = System::Drawing::Size(80, 20);
+			   this->textBoxU0->TabIndex = 26;
+			   this->textBoxU0->Text = L"10";
+			   // 
+			   // label5
+			   // 
+			   this->label5->AutoSize = true;
+			   this->label5->Location = System::Drawing::Point(149, 23);
+			   this->label5->Name = L"label5";
+			   this->label5->Size = System::Drawing::Size(19, 13);
+			   this->label5->TabIndex = 25;
+			   this->label5->Text = L"u0";
+			   this->label5->Click += gcnew System::EventHandler(this, &MyForm::label5_Click);
+			   // 
+			   // btnReset
+			   // 
+			   this->btnReset->Location = System::Drawing::Point(1108, 124);
+			   this->btnReset->Name = L"btnReset";
+			   this->btnReset->Size = System::Drawing::Size(182, 67);
+			   this->btnReset->TabIndex = 24;
+			   this->btnReset->Text = L"Reset";
+			   this->btnReset->UseVisualStyleBackColor = true;
+			   this->btnReset->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			   // 
 			   // label4
 			   // 
@@ -386,7 +567,7 @@ namespace Graph {
 			   this->textBoxEpsB->Name = L"textBoxEpsB";
 			   this->textBoxEpsB->Size = System::Drawing::Size(100, 20);
 			   this->textBoxEpsB->TabIndex = 22;
-			   this->textBoxEpsB->Text = L"1e-14";
+			   this->textBoxEpsB->Text = L"0,0001";
 			   // 
 			   // checkAdaptive
 			   // 
@@ -416,7 +597,7 @@ namespace Graph {
 			   this->tableLayoutPanel1->RowCount = 1;
 			   this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 100)));
 			   this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
-			   this->tableLayoutPanel1->Size = System::Drawing::Size(1390, 366);
+			   this->tableLayoutPanel1->Size = System::Drawing::Size(1390, 316);
 			   this->tableLayoutPanel1->TabIndex = 22;
 			   // 
 			   // MyForm
@@ -437,10 +618,10 @@ namespace Graph {
 		   }
 #pragma endregion
 	private:
-		double m_val = 0.01;
-		double k_val = 2.0;
-		double ks_val = 2.0;
-		double c_val = 0.15;
+		double m_val;
+		double k_val;
+		double ks_val;
+		double c_val;
 
 		double f1(double x) {
 			return sin(x);
@@ -481,8 +662,12 @@ namespace Graph {
 			SetupTable();
 
 			// Считывание параметров из формы
+			m_val = Convert::ToDouble(txtM->Text->Replace(".", ",")); // m
+			c_val = Convert::ToDouble(txtC->Text->Replace(".", ",")); // c
+			k_val = Convert::ToDouble(txtK->Text->Replace(".", ",")); // k
+			ks_val = Convert::ToDouble(txtKS->Text->Replace(".", ",")); // k*
 
-			double u0 = 10.0; // u0
+			double u0 = Convert::ToDouble(textBoxU0->Text->Replace(".", ",")); // u0
 			double v0 = 0.0; // u'0
 			double h_start = Convert::ToDouble(textBox3->Text->Replace(".", ",")); // начальный шаг
 			double a = Convert::ToDouble(textBox1->Text->Replace(".", ",")); // левая граница
@@ -492,7 +677,7 @@ namespace Graph {
 			double eps_border = Convert::ToDouble(textBoxEpsB->Text->Replace(".", ",")); // параметр контроля выхода за правую границу
 
 			int N_var = Convert::ToInt32(textBoxN->Text);
-			int N_max = 100000; // максимальное количество шагов
+			int N_max = Convert::ToInt32(txtNmax->Text); // максимальное количество шагов
 			int i = 0;
 
 			double x = a;
@@ -538,8 +723,12 @@ namespace Graph {
 
 			i++;
 
+			int current_c1 = 0;
+			int current_c2 = 0;
+
 			// основной цикл интегрирования
 			while (x < b - eps_border && i < N_max) {
+
 				if (x + current_h > b)
 					current_h = b - x;
 
@@ -552,6 +741,7 @@ namespace Graph {
 				if (Double::IsInfinity(u_h) || Double::IsNaN(u_h)) {
 					current_h /= 2.0; // резкое уменьшение шага
 					total_divisions++;
+					current_c1 = 1;
 					if (current_h < 1e-15) {
 						MessageBox::Show("Система расходится даже при минимальном шаге!");
 						break;
@@ -573,6 +763,7 @@ namespace Graph {
 					if (olp > eps_olp && current_h > 1e-15) {
 						current_h /= 2.0;
 						total_divisions++;
+						current_c1 = 1;
 						continue;
 					}
 				}
@@ -591,9 +782,30 @@ namespace Graph {
 				list_v->Add(x, v);
 				list_phase->Add(u, v);
 
+				if (olp > max_olp) {
+					max_olp = olp;
+					x_max_olp = x;
+				}
+
+				if (current_h > max_h) {
+					max_h = current_h;
+					x_max_h = x;
+				}
+				if (current_h < min_h) {
+					min_h = current_h;
+					x_min_h = x;
+				}
+
+				current_c2 = 0;
+				if (isAdaptive && olp < eps_olp / 32.0 && x < b - eps_border) {
+					current_h *= 2.0;
+					total_doublings++;
+					current_c2 = 1;
+				}
+
 				if (radioTest->Checked) {
-					double u_exact = 10.0 * Math::Exp(Math::Pow(-1.0, N_var) * (N_var / 2.0) * x);
-					double abs_error = Math::Abs(u_exact - u_h);
+					double u_exact = u0 * Math::Exp(Math::Pow(-1.0, N_var) * (N_var / 2.0) * x);
+					double abs_error = Math::Abs(u_exact - u);
 
 					int rowIdx = dataGridView1->Rows->Add();
 					dataGridView1->Rows[rowIdx]->Cells[0]->Value = i;
@@ -603,8 +815,8 @@ namespace Graph {
 					dataGridView1->Rows[rowIdx]->Cells[4]->Value = isAdaptive ? (Object^)(u_h - u_half2) : nullptr;
 					dataGridView1->Rows[rowIdx]->Cells[5]->Value = isAdaptive ? olp : 0.0;
 					dataGridView1->Rows[rowIdx]->Cells[6]->Value = current_h;
-					dataGridView1->Rows[rowIdx]->Cells[7]->Value = total_divisions;
-					dataGridView1->Rows[rowIdx]->Cells[8]->Value = total_doublings;
+					dataGridView1->Rows[rowIdx]->Cells[7]->Value = current_c1;
+					dataGridView1->Rows[rowIdx]->Cells[8]->Value = current_c2;
 
 					dataGridView1->Rows[rowIdx]->Cells[9]->Value = u_exact;
 					dataGridView1->Rows[rowIdx]->Cells[10]->Value = abs_error;
@@ -624,31 +836,14 @@ namespace Graph {
 					dataGridView1->Rows[rowIdx]->Cells[4]->Value = isAdaptive ? (Object^)(u_h - u_half2) : nullptr;
 					dataGridView1->Rows[rowIdx]->Cells[5]->Value = isAdaptive ? olp : 0.0;
 					dataGridView1->Rows[rowIdx]->Cells[6]->Value = current_h;
-					dataGridView1->Rows[rowIdx]->Cells[7]->Value = total_divisions;
-					dataGridView1->Rows[rowIdx]->Cells[8]->Value = total_doublings;
-				}
-
-				if (olp > max_olp) {
-					max_olp = olp;
-					x_max_olp = x;
-				}
-
-				if (current_h > max_h) {
-					max_h = current_h;
-					x_max_h = x;
-				}
-				if (current_h < min_h) {
-					min_h = current_h;
-					x_min_h = x;
+					dataGridView1->Rows[rowIdx]->Cells[7]->Value = current_c1;
+					dataGridView1->Rows[rowIdx]->Cells[8]->Value = current_c2;
 				}
 
 				i++;
-
-				if (isAdaptive && olp < eps_olp / 32.0 && x < b - eps_border) {
-					current_h *= 2.0;
-					total_doublings++;
-				}
+				current_c1 = 0;
 			}
+
 			//list_u->Add(x, u);
 			//list_v->Add(x, v);
 			//list_phase->Add(u, v);
@@ -663,9 +858,9 @@ namespace Graph {
 
 			// формирование отчета по ТЗ
 			String^ report = "Итоговые данные:\n";
-			report += "n = " + i + "\n";
-			report += "b - xn = " + (b - x).ToString("E2") + "\n";
-			report += "max |ОЛП| = " + max_olp.ToString("E3") + " при x = " + x_max_olp + "\n";
+			report += "Число шагов (n) = " + i + "\n";
+			report += "Невязка на правой границе (b - xn) = " + (b - x).ToString("E2") + "\n";
+			report += "max |ОЛП| = " + max_olp.ToString("F12") + " при x = " + x_max_olp + "\n";
 			report += "Общее число удвоений (C2) = " + total_doublings + "\n";
 			report += "Общее число делений (C1) = " + total_divisions + "\n";
 			report += "max hi = " + max_h + " при x = " + x_max_h + "\n";
@@ -675,7 +870,23 @@ namespace Graph {
 				report += "Для тестовой задачи: max |ui - vi| = " + max_global_err.ToString("E3") + " при x = " + x_max_err;
 			}
 
-			MessageBox::Show(report, "Результаты по ТЗ");
+			Form^ statsForm = gcnew Form();
+			statsForm->Text = "Итоговая статистика и результаты расчета";
+			statsForm->Size = System::Drawing::Size(600, 450); // Сразу задаем размер побольше
+			statsForm->StartPosition = FormStartPosition::CenterParent;
+			statsForm->MinimumSize = System::Drawing::Size(400, 300);
+
+			// Используем RichTextBox, чтобы текст можно было выделять и копировать
+			RichTextBox^ rtb = gcnew RichTextBox();
+			rtb->Dock = DockStyle::Fill;
+			rtb->ReadOnly = true;
+			rtb->BackColor = Color::White;
+			rtb->Text = report;
+			// Моноширинный шрифт Consolas идеален для цифр и табличных данных
+			rtb->Font = gcnew System::Drawing::Font("Consolas", 12);
+
+			statsForm->Controls->Add(rtb);
+			statsForm->ShowDialog(); // Показываем окно
 		}
 		catch (Exception^ ex) {
 			dataGridView1->Visible = true;
@@ -693,8 +904,8 @@ namespace Graph {
 			   if (checkPhase->Checked) {
 				   panel->Title->Text = "Фазовый портрет";
 				   panel->XAxis->Title->Text = "Смещение u";
-				   panel->YAxis->Title->Text = "Скорость v";
-				   panel->AddCurve("v(u)", list_phase, Color::Green, SymbolType::None);
+				   panel->YAxis->Title->Text = "Скорость u'";
+				   panel->AddCurve("u'(u)", list_phase, Color::Green, SymbolType::None);
 			   }
 			   else {
 				   panel->XAxis->Title->Text = "Время x";
@@ -713,9 +924,9 @@ namespace Graph {
 				   }
 				   else {
 					   panel->Title->Text = "Динамика системы";
-					   panel->YAxis->Title->Text = "u, v";
+					   panel->YAxis->Title->Text = "u, u'";
 					   panel->AddCurve("Смещение u(x)", list_u, Color::Red, SymbolType::None);
-					   panel->AddCurve("Скорость v(x)", list_v, Color::Blue, SymbolType::None);
+					   panel->AddCurve("Скорость u'(x)", list_v, Color::Blue, SymbolType::None);
 				   }
 			   }
 			   // Вызываем метод AxisChange (), чтобы обновить данные об осях. 
@@ -750,6 +961,15 @@ private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e)
 private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	UpdateGraph();
+}
+
+private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
