@@ -832,20 +832,19 @@ namespace Graph {
 					current_c2 = 1;
 				}
 
+				int rowIdx = dataGridView1->Rows->Add();
+				dataGridView1->Rows[rowIdx]->Cells[0]->Value = i;
+				dataGridView1->Rows[rowIdx]->Cells[1]->Value = x;
+				dataGridView1->Rows[rowIdx]->Cells[2]->Value = u_h;
+				dataGridView1->Rows[rowIdx]->Cells[3]->Value = isAdaptive ? (Object^)u_half2 : nullptr;
+				dataGridView1->Rows[rowIdx]->Cells[4]->Value = isAdaptive ? (Object^)(u_h - u_half2) : nullptr;
+				dataGridView1->Rows[rowIdx]->Cells[5]->Value = isAdaptive ? olp : 0.0;
+				dataGridView1->Rows[rowIdx]->Cells[6]->Value = current_h;
+				dataGridView1->Rows[rowIdx]->Cells[7]->Value = current_c1;
+				dataGridView1->Rows[rowIdx]->Cells[8]->Value = current_c2;
 				if (radioTest->Checked) {
 					double u_exact = u0 * Math::Exp(Math::Pow(-1.0, N_var) * (N_var / 2.0) * x);
 					double abs_error = Math::Abs(u_exact - u);
-
-					int rowIdx = dataGridView1->Rows->Add();
-					dataGridView1->Rows[rowIdx]->Cells[0]->Value = i;
-					dataGridView1->Rows[rowIdx]->Cells[1]->Value = x;
-					dataGridView1->Rows[rowIdx]->Cells[2]->Value = u_h;
-					dataGridView1->Rows[rowIdx]->Cells[3]->Value = isAdaptive ? (Object^)u_half2 : nullptr;
-					dataGridView1->Rows[rowIdx]->Cells[4]->Value = isAdaptive ? (Object^)(u_h - u_half2) : nullptr;
-					dataGridView1->Rows[rowIdx]->Cells[5]->Value = isAdaptive ? olp : 0.0;
-					dataGridView1->Rows[rowIdx]->Cells[6]->Value = current_h;
-					dataGridView1->Rows[rowIdx]->Cells[7]->Value = current_c1;
-					dataGridView1->Rows[rowIdx]->Cells[8]->Value = current_c2;
 
 					dataGridView1->Rows[rowIdx]->Cells[9]->Value = u_exact;
 					dataGridView1->Rows[rowIdx]->Cells[10]->Value = abs_error;
@@ -856,32 +855,10 @@ namespace Graph {
 					}
 					list_exact->Add(x, u_exact);
 				}
-				else {
-					int rowIdx = dataGridView1->Rows->Add();
-					dataGridView1->Rows[rowIdx]->Cells[0]->Value = i;
-					dataGridView1->Rows[rowIdx]->Cells[1]->Value = x;
-					dataGridView1->Rows[rowIdx]->Cells[2]->Value = u_h;
-					dataGridView1->Rows[rowIdx]->Cells[3]->Value = isAdaptive ? (Object^)u_half2 : nullptr;
-					dataGridView1->Rows[rowIdx]->Cells[4]->Value = isAdaptive ? (Object^)(u_h - u_half2) : nullptr;
-					dataGridView1->Rows[rowIdx]->Cells[5]->Value = isAdaptive ? olp : 0.0;
-					dataGridView1->Rows[rowIdx]->Cells[6]->Value = current_h;
-					dataGridView1->Rows[rowIdx]->Cells[7]->Value = current_c1;
-					dataGridView1->Rows[rowIdx]->Cells[8]->Value = current_c2;
-				}
 
 				i++;
 				current_c1 = 0;
 			}
-
-			//list_u->Add(x, u);
-			//list_v->Add(x, v);
-			//list_phase->Add(u, v);
-
-			//if (radioTest->Checked) {
-			//	double u_exact_final = 10.0 * Math::Exp(Math::Pow(-1.0, N_var) * (N_var / 2.0) * x);
-			//	list_exact->Add(x, u_exact_final);
-			//}
-
 			dataGridView1->Visible = true;
 			UpdateGraph();
 
