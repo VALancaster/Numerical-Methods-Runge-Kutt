@@ -76,7 +76,7 @@ namespace Graph {
 		PointPairList^ list_exact = gcnew PointPairList(); // график точного решения (для тестовой задачи)
 	private: System::Windows::Forms::RadioButton^ radioTest;
 	private: System::Windows::Forms::RadioButton^ radioMain;
-	private: System::Windows::Forms::CheckBox^ checkPhase;
+
 	private: System::Windows::Forms::TextBox^ textBoxN;
 
 
@@ -109,6 +109,9 @@ namespace Graph {
 	private: System::Windows::Forms::TextBox^ txtNmax;
 	private: System::Windows::Forms::TextBox^ txtV0;
 	private: System::Windows::Forms::Label^ label13;
+	private: System::Windows::Forms::RadioButton^ rbPhase;
+	private: System::Windows::Forms::RadioButton^ rbV;
+	private: System::Windows::Forms::RadioButton^ rbU;
 
 
 
@@ -169,12 +172,14 @@ namespace Graph {
 			   this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			   this->radioTest = (gcnew System::Windows::Forms::RadioButton());
 			   this->radioMain = (gcnew System::Windows::Forms::RadioButton());
-			   this->checkPhase = (gcnew System::Windows::Forms::CheckBox());
 			   this->textBoxN = (gcnew System::Windows::Forms::TextBox());
 			   this->textBoxEps = (gcnew System::Windows::Forms::TextBox());
 			   this->label6 = (gcnew System::Windows::Forms::Label());
 			   this->label7 = (gcnew System::Windows::Forms::Label());
 			   this->panel1 = (gcnew System::Windows::Forms::Panel());
+			   this->rbPhase = (gcnew System::Windows::Forms::RadioButton());
+			   this->rbV = (gcnew System::Windows::Forms::RadioButton());
+			   this->rbU = (gcnew System::Windows::Forms::RadioButton());
 			   this->label14 = (gcnew System::Windows::Forms::Label());
 			   this->txtNmax = (gcnew System::Windows::Forms::TextBox());
 			   this->txtV0 = (gcnew System::Windows::Forms::TextBox());
@@ -319,7 +324,6 @@ namespace Graph {
 			   this->radioTest->Name = L"radioTest";
 			   this->radioTest->Size = System::Drawing::Size(111, 17);
 			   this->radioTest->TabIndex = 14;
-			   this->radioTest->TabStop = true;
 			   this->radioTest->Text = L"Тестовая задача";
 			   this->radioTest->UseVisualStyleBackColor = true;
 			   this->radioTest->CheckedChanged += gcnew System::EventHandler(this, &MyForm::radioButton1_CheckedChanged);
@@ -331,20 +335,8 @@ namespace Graph {
 			   this->radioMain->Name = L"radioMain";
 			   this->radioMain->Size = System::Drawing::Size(113, 17);
 			   this->radioMain->TabIndex = 15;
-			   this->radioMain->TabStop = true;
 			   this->radioMain->Text = L"Основная задача";
 			   this->radioMain->UseVisualStyleBackColor = true;
-			   // 
-			   // checkPhase
-			   // 
-			   this->checkPhase->AutoSize = true;
-			   this->checkPhase->Location = System::Drawing::Point(752, 22);
-			   this->checkPhase->Name = L"checkPhase";
-			   this->checkPhase->Size = System::Drawing::Size(118, 17);
-			   this->checkPhase->TabIndex = 16;
-			   this->checkPhase->Text = L"Фазовый портрет";
-			   this->checkPhase->UseVisualStyleBackColor = true;
-			   this->checkPhase->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkPhase_CheckedChanged);
 			   // 
 			   // textBoxN
 			   // 
@@ -384,6 +376,9 @@ namespace Graph {
 			   // 
 			   // panel1
 			   // 
+			   this->panel1->Controls->Add(this->rbPhase);
+			   this->panel1->Controls->Add(this->rbV);
+			   this->panel1->Controls->Add(this->rbU);
 			   this->panel1->Controls->Add(this->label14);
 			   this->panel1->Controls->Add(this->txtNmax);
 			   this->panel1->Controls->Add(this->txtV0);
@@ -402,7 +397,6 @@ namespace Graph {
 			   this->panel1->Controls->Add(this->label4);
 			   this->panel1->Controls->Add(this->textBoxEpsB);
 			   this->panel1->Controls->Add(this->checkAdaptive);
-			   this->panel1->Controls->Add(this->checkPhase);
 			   this->panel1->Controls->Add(this->label3);
 			   this->panel1->Controls->Add(this->textBox3);
 			   this->panel1->Controls->Add(this->textBox2);
@@ -421,6 +415,41 @@ namespace Graph {
 			   this->panel1->Name = L"panel1";
 			   this->panel1->Size = System::Drawing::Size(1390, 236);
 			   this->panel1->TabIndex = 21;
+			   // 
+			   // rbPhase
+			   // 
+			   this->rbPhase->AutoSize = true;
+			   this->rbPhase->Location = System::Drawing::Point(739, 82);
+			   this->rbPhase->Name = L"rbPhase";
+			   this->rbPhase->Size = System::Drawing::Size(117, 17);
+			   this->rbPhase->TabIndex = 43;
+			   this->rbPhase->Text = L"Фазовый портрет";
+			   this->rbPhase->UseVisualStyleBackColor = true;
+			   this->rbPhase->CheckedChanged += gcnew System::EventHandler(this, &MyForm::rbPhase_CheckedChanged);
+			   // 
+			   // rbV
+			   // 
+			   this->rbV->AutoSize = true;
+			   this->rbV->Location = System::Drawing::Point(739, 47);
+			   this->rbV->Name = L"rbV";
+			   this->rbV->Size = System::Drawing::Size(97, 17);
+			   this->rbV->TabIndex = 42;
+			   this->rbV->Text = L"Скорость U\'(x)";
+			   this->rbV->UseVisualStyleBackColor = true;
+			   this->rbV->CheckedChanged += gcnew System::EventHandler(this, &MyForm::rbV_CheckedChanged);
+			   // 
+			   // rbU
+			   // 
+			   this->rbU->AutoSize = true;
+			   this->rbU->Checked = true;
+			   this->rbU->Location = System::Drawing::Point(739, 15);
+			   this->rbU->Name = L"rbU";
+			   this->rbU->Size = System::Drawing::Size(104, 17);
+			   this->rbU->TabIndex = 41;
+			   this->rbU->TabStop = true;
+			   this->rbU->Text = L"Смещение U(x) ";
+			   this->rbU->UseVisualStyleBackColor = true;
+			   this->rbU->CheckedChanged += gcnew System::EventHandler(this, &MyForm::rbU_CheckedChanged);
 			   // 
 			   // label14
 			   // 
@@ -574,7 +603,7 @@ namespace Graph {
 			   this->checkAdaptive->AutoSize = true;
 			   this->checkAdaptive->Checked = true;
 			   this->checkAdaptive->CheckState = System::Windows::Forms::CheckState::Checked;
-			   this->checkAdaptive->Location = System::Drawing::Point(752, 55);
+			   this->checkAdaptive->Location = System::Drawing::Point(911, 89);
 			   this->checkAdaptive->Name = L"checkAdaptive";
 			   this->checkAdaptive->Size = System::Drawing::Size(110, 17);
 			   this->checkAdaptive->TabIndex = 21;
@@ -859,7 +888,7 @@ namespace Graph {
 			// формирование отчета по ТЗ
 			String^ report = "Итоговые данные:\n";
 			report += "Число шагов (n) = " + i + "\n";
-			report += "Невязка на правой границе (b - xn) = " + (b - x).ToString("E2") + "\n";
+			report += "b - xn = " + (b - x).ToString("E2") + "\n";
 			report += "max |ОЛП| = " + max_olp.ToString("F12") + " при x = " + x_max_olp + "\n";
 			report += "Общее число удвоений (C2) = " + total_doublings + "\n";
 			report += "Общее число делений (C1) = " + total_divisions + "\n";
@@ -897,37 +926,43 @@ namespace Graph {
 		   void UpdateGraph() {
 			   GraphPane^ panel = zedGraphControl1->GraphPane;
 			   panel->CurveList->Clear();
+
 			   panel->XAxis->Scale->MinAuto = true;
 			   panel->XAxis->Scale->MaxAuto = true;
 			   panel->YAxis->Scale->MinAuto = true;
 			   panel->YAxis->Scale->MaxAuto = true;
-			   if (checkPhase->Checked) {
+			   if (rbPhase->Checked) {
 				   panel->Title->Text = "Фазовый портрет";
 				   panel->XAxis->Title->Text = "Смещение u";
 				   panel->YAxis->Title->Text = "Скорость u'";
 				   panel->AddCurve("u'(u)", list_phase, Color::Green, SymbolType::None);
 			   }
-			   else {
+			   else if (rbU->Checked) {
 				   panel->XAxis->Title->Text = "Время x";
+				   panel->YAxis->Title->Text = "Смещение U";
 
 				   if (radioTest->Checked) {
-					   panel->Title->Text = "Тестовая задача: сравнение решений";
-					   panel->YAxis->Title->Text = "u";
+					   panel->Title->Text = "Тестовая задача: Сравнение U(x)";
 
-					   LineItem^ curveExact = panel->AddCurve("Точное решение", list_exact, Color::Blue, SymbolType::None);
+					   LineItem^ curveExact = panel->AddCurve("Точное U(x)", list_exact, Color::Blue, SymbolType::None);
 					   curveExact->Line->Style = System::Drawing::Drawing2D::DashStyle::Dash; 
 					   curveExact->Line->Width = 2.0f; 
-					   LineItem^ curveRK = panel->AddCurve("Приближенное (RK4)", list_u, Color::Red, SymbolType::Circle);
+					   LineItem^ curveRK = panel->AddCurve("RK4 U(x)", list_u, Color::Red, SymbolType::Circle);
 					   curveRK->Symbol->Size = 4.0f; 
 					   curveRK->Symbol->Fill->Type = FillType::Solid; 
 					   curveRK->Line->Width = 1.0f;
 				   }
 				   else {
-					   panel->Title->Text = "Динамика системы";
-					   panel->YAxis->Title->Text = "u, u'";
-					   panel->AddCurve("Смещение u(x)", list_u, Color::Red, SymbolType::None);
-					   panel->AddCurve("Скорость u'(x)", list_v, Color::Blue, SymbolType::None);
+					   panel->Title->Text = "Основная задача: Смещение U(x)";
+					   panel->AddCurve("U(x)", list_u, Color::Red, SymbolType::None);
 				   }
+			   }
+			   else if (rbV->Checked) {
+				   panel->XAxis->Title->Text = "Время x";
+				   panel->YAxis->Title->Text = "Скорость U'";
+				   panel->Title->Text = (radioTest->Checked) ? "Тестовая задача: Скорость" : "Основная задача: Скорость U'(x)";
+
+				   panel->AddCurve("U'(x)", list_v, Color::Blue, SymbolType::None);
 			   }
 			   // Вызываем метод AxisChange (), чтобы обновить данные об осях. 
 			   // В противном случае на рисунке будет показана только часть графика, 
@@ -970,6 +1005,17 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void rbU_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+	UpdateGraph();
+}
+
+private: System::Void rbV_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+	UpdateGraph();
+}
+
+private: System::Void rbPhase_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+	UpdateGraph();
 }
 };
 }
